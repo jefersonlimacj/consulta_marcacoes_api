@@ -6,7 +6,7 @@ import {
   Marcacao,
   Medico,
   Paciente,
-} from "../../generated/prisma/client";
+} from "../../generated/client";
 
 export const marcacaoResolvers = {
   Query: {

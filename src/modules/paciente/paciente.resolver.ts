@@ -1,5 +1,5 @@
 import { prisma } from "../../prisma";
-import { Paciente } from "../../generated/prisma/client";
+import { Paciente } from "../../generated/client";
 
 export const pacienteResolver = {
   Query: {
