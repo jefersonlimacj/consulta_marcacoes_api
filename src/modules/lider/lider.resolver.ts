@@ -1,5 +1,5 @@
 import { prisma } from "../../prisma";
-import { Lider } from "../../generated/client";
+import { Lider } from "@prisma/client";
 
 export const liderResolvers = {
   Query: {

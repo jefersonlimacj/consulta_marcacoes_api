@@ -1,12 +1,8 @@
 import { prisma } from "../../prisma";
 import {
-  Especialidade,
   ExameStatus,
-  Lider,
   Marcacao,
-  Medico,
-  Paciente,
-} from "../../generated/client";
+} from "@prisma/client";
 
 export const marcacaoResolvers = {
   Query: {
