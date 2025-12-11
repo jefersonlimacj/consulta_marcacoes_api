@@ -20,7 +20,7 @@ async function startServer() {
   app.use(
     '/graphql',
     cors({
-      origin: ['http://localhost:5173', 'http://127.0.0.1:5173', 'https://rsmaissaude.vercel.app/'], // Vite dev server
+      origin: ['http://localhost:5173', 'https://rsmaissaude.vercel.app/'], // Vite dev server
       credentials: true, // permite cookies, Authorization header, etc
     }),
     express.json(),
