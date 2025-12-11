@@ -3,7 +3,6 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@as-integrations/express5';
 import express from 'express';
 import cors from 'cors';
-import type { CorsRequest } from 'cors'; // importante pro TypeScript
 
 import { typeDefs } from './graphql/typeDefs';
 import { resolvers } from './graphql/resolvers';
