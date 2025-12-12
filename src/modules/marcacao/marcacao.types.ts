@@ -18,8 +18,8 @@ export const marcacaoTypeDefs = gql`
     status: ExameStatus!
   }
   enum ExameStatus {
+    AGUARDANDO
     MARCADO
-    REALIZADO
     CANCELADO
   }
 

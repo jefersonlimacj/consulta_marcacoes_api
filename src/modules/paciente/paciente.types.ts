@@ -6,8 +6,8 @@ export const pacienteTypeDefs = gql`
         nome: String!
         cpf: String!
         dataNascimento: DateTime!
-        telefone: String!
-        telefoneS: String!
+        telefone: String
+        telefoneS: String
         nSus: String!
         exames: [Marcacao!]!
     }

@@ -78,7 +78,7 @@ model Marcacao {
 }
 
 enum ExameStatus {
+  AGUARDANDO
   MARCADO
-  REALIZADO
   CANCELADO
 }
