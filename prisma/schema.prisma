@@ -30,6 +30,7 @@ model Paciente {
   cpf            String     @unique
   dataNascimento DateTime?
   telefone       String?
+  telefoneS      String?    @map("telefone_s")
   nSus           String?    @map("n_sus")
   criadoEm       DateTime   @default(now())
   exames         Marcacao[]

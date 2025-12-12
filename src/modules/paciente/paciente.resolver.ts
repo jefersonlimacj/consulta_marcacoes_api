@@ -28,6 +28,7 @@ export const pacienteResolver = {
           cpf: string;
           dataNascimento: Date;
           telefone: string;
+          telefoneS: string;
           nSus: string;
         };
       }
@@ -38,6 +39,7 @@ export const pacienteResolver = {
           cpf: input.cpf,
           dataNascimento: input.dataNascimento,
           telefone: input.telefone,
+          telefoneS: input.telefoneS,
           nSus: input.nSus,
         },
       });
@@ -56,6 +58,7 @@ export const pacienteResolver = {
           cpf: string;
           dataNascimento: Date;
           telefone: string;
+          telefoneS: string;
           nSus: string;
         };
       }
@@ -69,6 +72,7 @@ export const pacienteResolver = {
           cpf: input.cpf,
           dataNascimento: input.dataNascimento,
           telefone: input.telefone,
+          telefoneS: input.telefoneS,
           nSus: input.nSus,
         },
       });

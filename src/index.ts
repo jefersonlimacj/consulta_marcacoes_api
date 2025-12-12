@@ -1,11 +1,11 @@
 // src/index.ts (ou onde estiver o seu server)
-import { ApolloServer } from '@apollo/server';
-import { expressMiddleware } from '@as-integrations/express5';
-import express from 'express';
-import cors from 'cors';
+import { ApolloServer } from "@apollo/server";
+import { expressMiddleware } from "@as-integrations/express5";
+import express from "express";
+import cors from "cors";
 
-import { typeDefs } from './graphql/typeDefs';
-import { resolvers } from './graphql/resolvers';
+import { typeDefs } from "./graphql/typeDefs";
+import { resolvers } from "./graphql/resolvers";
 
 async function startServer() {
   const app = express();
@@ -18,9 +18,9 @@ async function startServer() {
 
   // Configura CORS no Express
   app.use(
-    '/graphql',
+    "/graphql",
     cors({
-      origin: ['http://localhost:5173', 'https://rsmaissaude.vercel.app'], // Vite dev server
+      origin: ["http://localhost:5173", "https://rsmaissaude.vercel.app"], // Vite dev server
       credentials: true, // permite cookies, Authorization header, etc
     }),
     express.json(),
@@ -32,6 +32,13 @@ async function startServer() {
     })
   );
 
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+
+  app.get("/ping", (req, res) => {
+   res.status(200).send("pong");
+  });
+
   const { server: httpServer } = await new Promise<any>((resolve) => {
     const httpServer = app.listen({ port: 4000 }, () => {
       console.log(`Server ready at http://localhost:4000/graphql`);
@@ -41,5 +48,5 @@ async function startServer() {
 }
 
 startServer().catch((err) => {
-  console.error('Erro ao iniciar o servidor:', err);
+  console.error("Erro ao iniciar o servidor:", err);
 });
