@@ -16,6 +16,7 @@ export const marcacaoTypeDefs = gql`
     medico: Medico
     medicoId: ID
     status: ExameStatus!
+    retorno: Boolean
   }
   enum ExameStatus {
     AGUARDANDO
@@ -38,6 +39,7 @@ export const marcacaoTypeDefs = gql`
     medicoId: ID
     status: ExameStatus!
     observacoes: String
+    retorno: Boolean
   }
 
   input MarcacaoInputUpdate {
@@ -50,6 +52,7 @@ export const marcacaoTypeDefs = gql`
     medicoId: ID
     status: ExameStatus
     observacoes: String
+    retorno: Boolean
   }
 
   type Mutation {

@@ -30,9 +30,9 @@ model Paciente {
   cpf            String     @unique
   dataNascimento DateTime?
   telefone       String?
-  telefoneS      String?    @map("telefone_s")
   nSus           String?    @map("n_sus")
   criadoEm       DateTime   @default(now())
+  telefoneS      String?    @map("telefone_s")
   exames         Marcacao[]
 
   @@map("pacientes")
@@ -57,22 +57,22 @@ model Medico {
 }
 
 model Marcacao {
-  id              BigInt      @id @default(autoincrement())
-  dataMarcada     DateTime    @map("data_marcada")
-  dataAtendimento DateTime?   @map("data_atendimento")
-  status          ExameStatus @default(MARCADO)
-  observacoes     String?     @db.VarChar(255)
-  pacienteId      BigInt      @map("paciente_id")
-  especialidadeId BigInt      @map("especialidade_id")
-  criadoEm        DateTime    @default(now()) @map("criado_em")
-  medicoId        BigInt?     @map("medico_id")
-  liderId         BigInt      @map("lider_id")
-  tipoExame       String      @map("tipo_exame")
-
-  especialidade Especialidade @relation(fields: [especialidadeId], references: [id])
-  lider         Lider         @relation(fields: [liderId], references: [id])
-  medico        Medico?       @relation(fields: [medicoId], references: [id])
-  paciente      Paciente      @relation(fields: [pacienteId], references: [id])
+  id              BigInt        @id @default(autoincrement())
+  dataMarcada     DateTime      @map("data_marcada")
+  dataAtendimento DateTime?     @map("data_atendimento")
+  status          ExameStatus   @default(MARCADO)
+  observacoes     String?       @db.VarChar(255)
+  pacienteId      BigInt        @map("paciente_id")
+  especialidadeId BigInt        @map("especialidade_id")
+  criadoEm        DateTime      @default(now()) @map("criado_em")
+  liderId         BigInt        @map("lider_id")
+  tipoExame       String        @map("tipo_exame")
+  medicoId        BigInt?       @map("medico_id")
+  retorno         Boolean       @default(false) @map("retorno")
+  especialidade   Especialidade @relation(fields: [especialidadeId], references: [id])
+  lider           Lider         @relation(fields: [liderId], references: [id])
+  medico          Medico?       @relation(fields: [medicoId], references: [id])
+  paciente        Paciente      @relation(fields: [pacienteId], references: [id])
 
   @@map("marcacoes")
 }

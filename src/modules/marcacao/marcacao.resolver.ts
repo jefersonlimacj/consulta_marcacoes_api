@@ -1,8 +1,5 @@
 import { prisma } from "../../prisma";
-import {
-  ExameStatus,
-  Marcacao,
-} from "@prisma/client";
+import { ExameStatus, Marcacao } from "@prisma/client";
 
 export const marcacaoResolvers = {
   Query: {
@@ -66,6 +63,7 @@ export const marcacaoResolvers = {
           medicoId?: number;
           status: ExameStatus;
           observacoes?: string;
+          retorno?: boolean;
         };
       }
     ) => {
@@ -80,6 +78,7 @@ export const marcacaoResolvers = {
           medicoId: input.medicoId || null,
           status: input.status,
           observacoes: input.observacoes || null,
+          retorno: input.retorno,
         },
         include: {
           paciente: true,
@@ -107,12 +106,13 @@ export const marcacaoResolvers = {
           medicoId?: number;
           status: ExameStatus;
           observacoes?: string;
+          retorno: boolean;
         };
       }
     ) => {
       const marcacaoAtualizada = await prisma.marcacao.update({
         where: {
-          id
+          id,
         },
         data: {
           pacienteId: input.pacienteId,
