@@ -4,18 +4,18 @@ export const marcacaoTypeDefs = gql`
   type Marcacao {
     id: ID!
     paciente: Paciente
-    pacienteId: ID!
-    especialidade: Especialidade!
-    especialidadeId: ID!
-    tipoExame: String!
-    dataAtendimento: DateTime!
-    lider: Lider!
-    liderId: ID!
+    pacienteId: ID
+    especialidade: Especialidade
+    especialidadeId: ID
+    tipoExame: String
+    dataAtendimento: DateTime
+    lider: Lider
+    liderId: ID
     dataMarcada: DateTime
     observacoes: String
     medico: Medico
     medicoId: ID
-    status: ExameStatus!
+    status: ExameStatus
     retorno: Boolean
   }
   enum ExameStatus {
@@ -32,10 +32,10 @@ export const marcacaoTypeDefs = gql`
   input MarcacaoInput {
     pacienteId: ID!
     especialidadeId: ID!
-    tipoExame: String!
+    tipoExame: String
     dataAtendimento: DateTime!
-    liderId: ID!
-    dataMarcada: DateTime!
+    liderId: ID
+    dataMarcada: DateTime
     medicoId: ID
     status: ExameStatus!
     observacoes: String
