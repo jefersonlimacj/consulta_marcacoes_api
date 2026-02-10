@@ -14,6 +14,7 @@ export const marcacaoResolvers = {
       });
     },
   },
+  
   Marcacao: {
     id: (parent: Marcacao) => String(parent.id),
     paciente: async (parent: Marcacao) => {

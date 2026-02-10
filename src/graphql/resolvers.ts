@@ -6,6 +6,7 @@ import { medicoResolver } from "../modules/medico/medico.resolver";
 import { especialidadeResolver } from "../modules/especialidade/especialidade.resolver";
 import { liderResolvers } from "../modules/lider/lider.resolver";
 import { marcacaoResolvers } from "../modules/marcacao/marcacao.resolver";
+import { participacaoResolvers } from "../modules/participacao/participacao.resolvers";
 
 export const resolvers = mergeResolvers([
   usuarioResolver,
@@ -13,5 +14,6 @@ export const resolvers = mergeResolvers([
   medicoResolver,
   especialidadeResolver,
   liderResolvers,
-  marcacaoResolvers
+  marcacaoResolvers,
+  participacaoResolvers
 ]);

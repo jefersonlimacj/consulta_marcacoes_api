@@ -1,4 +1,3 @@
-// src/index.ts (ou onde estiver o seu server)
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@as-integrations/express5";
 import express from "express";
@@ -9,6 +8,7 @@ import { resolvers } from "./graphql/resolvers";
 
 async function startServer() {
   const app = express();
+
   const server = new ApolloServer({
     typeDefs,
     resolvers,
@@ -16,17 +16,15 @@ async function startServer() {
 
   await server.start();
 
-  // Configura CORS no Express
   app.use(
     "/graphql",
     cors({
-      origin: ["http://localhost:5173", "https://rsmaissaude.vercel.app"], // Vite dev server
-      credentials: true, // permite cookies, Authorization header, etc
+      origin: ["http://localhost:5173", "https://rsmaissaude.vercel.app"],
+      credentials: true,
     }),
     express.json(),
     expressMiddleware(server, {
       context: async ({ req }) => {
-        // contexto opcional (pra você usar token depois se quiser)
         return { req };
       },
     })
@@ -36,7 +34,7 @@ async function startServer() {
   app.use(express.urlencoded({ extended: true }));
 
   app.get("/ping", (req, res) => {
-   res.status(200).send("pong");
+    res.status(200).send("pong");
   });
 
   const { server: httpServer } = await new Promise<any>((resolve) => {

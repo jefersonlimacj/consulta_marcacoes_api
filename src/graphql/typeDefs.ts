@@ -7,6 +7,8 @@ import { marcacaoTypeDefs } from "../modules/marcacao/marcacao.types";
 import { pacienteTypeDefs } from "../modules/paciente/paciente.types";
 import { medicoTypeDefs } from "../modules/medico/medico.types";
 import gql from "graphql-tag";
+import { participacaoResolvers } from "../modules/participacao/participacao.resolvers";
+import { participacaoTypes } from "../modules/participacao/participacao.types";
 
 const baseTypeDefs = gql`
   scalar DateTime
@@ -19,6 +21,7 @@ const typeDefsArray = [
   marcacaoTypeDefs,
   pacienteTypeDefs,
   medicoTypeDefs,
+  participacaoTypes,
 ];
 
 export const typeDefs = mergeTypeDefs(typeDefsArray);

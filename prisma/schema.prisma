@@ -16,24 +16,26 @@ model Usuario {
 }
 
 model Lider {
-  id       BigInt     @id @default(autoincrement())
-  nome     String
-  telefone String
-  exames   Marcacao[]
+  id            BigInt         @id @default(autoincrement())
+  nome          String
+  telefone      String
+  exames        Marcacao[]
+  participacoes Participacao[]
 
   @@map("lider")
 }
 
 model Paciente {
-  id             BigInt     @id @default(autoincrement())
+  id             BigInt         @id @default(autoincrement())
   nome           String
-  cpf            String     @unique
+  cpf            String         @unique
   dataNascimento DateTime?
   telefone       String?
-  nSus           String?    @map("n_sus")
-  criadoEm       DateTime   @default(now())
-  telefoneS      String?    @map("telefone_s")
+  nSus           String?        @map("n_sus")
+  criadoEm       DateTime       @default(now())
+  telefoneS      String?        @map("telefone_s")
   exames         Marcacao[]
+  participacoes  Participacao[]
 
   @@map("pacientes")
 }
@@ -58,23 +60,55 @@ model Medico {
 
 model Marcacao {
   id              BigInt        @id @default(autoincrement())
-  dataMarcada     DateTime?      @map("data_marcada")
+  dataMarcada     DateTime?     @map("data_marcada")
   dataAtendimento DateTime?     @map("data_atendimento")
-  status          ExameStatus   @default(MARCADO)
+  status          ExameStatus   @default(AGUARDANDO)
   observacoes     String?       @db.VarChar(255)
   pacienteId      BigInt        @map("paciente_id")
   especialidadeId BigInt        @map("especialidade_id")
   criadoEm        DateTime      @default(now()) @map("criado_em")
-  liderId         BigInt?        @map("lider_id")
-  tipoExame       String?        @map("tipo_exame")
+  liderId         BigInt?       @map("lider_id")
+  tipoExame       String?       @map("tipo_exame")
   medicoId        BigInt?       @map("medico_id")
   retorno         Boolean       @default(false) @map("retorno")
   especialidade   Especialidade @relation(fields: [especialidadeId], references: [id])
-  lider           Lider?         @relation(fields: [liderId], references: [id])
+  lider           Lider?        @relation(fields: [liderId], references: [id])
   medico          Medico?       @relation(fields: [medicoId], references: [id])
   paciente        Paciente      @relation(fields: [pacienteId], references: [id])
 
   @@map("marcacoes")
+}
+
+model Participacao {
+  id          BigInt      @id @default(autoincrement())
+  pacienteId  BigInt      @map("paciente_id") @unique
+  liderId     BigInt      @map("lider_id")
+  statusFeira StatusFeira @default(AGUARDANDO) @map("status_feira")
+  presenca    Boolean     @default(false)
+  criadoEm    DateTime    @default(now()) @map("criado_em")
+
+  cardiologista     Boolean @default(false)
+  ginecologista     Boolean @default(false)
+  ortopedista       Boolean @default(false)
+  urologista        Boolean @default(false)
+  oftalmologista    Boolean @default(false)
+  odonto            Boolean @default(false)
+  usg               Boolean @default(false)
+  mamografia        Boolean @default(false)
+  eletrocardiograma Boolean @default(false)
+
+  lider    Lider    @relation(fields: [liderId], references: [id])
+  paciente Paciente @relation(fields: [pacienteId], references: [id])
+
+  @@map("participacao")
+}
+
+enum StatusFeira {
+  PENDENTE
+  AGUARDANDO
+  CONFIRMADA
+  CANCELADA
+  CONCLUIDO
 }
 
 enum ExameStatus {
