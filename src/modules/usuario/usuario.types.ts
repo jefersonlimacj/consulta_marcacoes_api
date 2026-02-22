@@ -5,6 +5,7 @@ export const usuarioTypeDefs = gql`
     id: ID!
     username: String!
     password: String!
+    regra: RegraAdmin
   }
   type Query {
     usuarios: [Usuario!]!
@@ -14,6 +15,12 @@ export const usuarioTypeDefs = gql`
   input UsuarioInput {
     username: String!
     password: String!
+    regra: RegraAdmin
+  }
+
+  enum RegraAdmin {
+    admin
+    consumer
   }
 
   type Mutation {

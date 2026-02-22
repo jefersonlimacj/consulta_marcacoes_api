@@ -7,10 +7,11 @@ datasource db {
 }
 
 model Usuario {
-  id       BigInt   @id @default(autoincrement())
-  username String   @unique
+  id       BigInt     @id @default(autoincrement())
+  username String     @unique
   password String
-  criadoEm DateTime @default(now()) @map("criado_em")
+  regra    RegraAdmin @default(consumer)
+  criadoEm DateTime   @default(now()) @map("criado_em")
 
   @@map("usuario")
 }
@@ -81,7 +82,7 @@ model Marcacao {
 
 model Participacao {
   id          BigInt      @id @default(autoincrement())
-  pacienteId  BigInt      @map("paciente_id") @unique
+  pacienteId  BigInt      @unique @map("paciente_id")
   liderId     BigInt      @map("lider_id")
   statusFeira StatusFeira @default(AGUARDANDO) @map("status_feira")
   presenca    Boolean     @default(false)
@@ -101,6 +102,11 @@ model Participacao {
   paciente Paciente @relation(fields: [pacienteId], references: [id])
 
   @@map("participacao")
+}
+
+enum RegraAdmin {
+  admin
+  consumer
 }
 
 enum StatusFeira {

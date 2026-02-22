@@ -1,5 +1,5 @@
 import { prisma } from "../../prisma";
-import { Usuario } from "@prisma/client";
+import { RegraAdmin, Usuario } from "@prisma/client";
 
 export const usuarioResolver = {
   Query: {
@@ -15,12 +15,13 @@ export const usuarioResolver = {
   Mutation: {
     criarUsuario: async (
       _: any,
-      { input }: { input: { username: string; password: string } }
+      { input }: { input: { username: string; password: string, regra: RegraAdmin} }
     ) => {
       const novoUsuario = await prisma.usuario.create({
         data: {
           username: input.username,
           password: input.password,
+          regra: input.regra
         },
       });
       return novoUsuario;
