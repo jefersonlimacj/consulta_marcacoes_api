@@ -6,6 +6,13 @@ export const usuarioResolver = {
     usuarios: async () => {
       return await prisma.usuario.findMany();
     },
+    usuario: async (_: any, args: { id: number }) => {
+      return await prisma.usuario.findUnique({
+        where: {
+          id: args.id,
+        },
+      });
+    },
   },
 
   Usuario: {
@@ -15,13 +22,15 @@ export const usuarioResolver = {
   Mutation: {
     criarUsuario: async (
       _: any,
-      { input }: { input: { username: string; password: string, regra: RegraAdmin} }
+      {
+        input,
+      }: { input: { username: string; password: string; regra: RegraAdmin } },
     ) => {
       const novoUsuario = await prisma.usuario.create({
         data: {
           username: input.username,
           password: input.password,
-          regra: input.regra
+          regra: input.regra,
         },
       });
       return novoUsuario;
@@ -29,7 +38,7 @@ export const usuarioResolver = {
 
     login: async (
       _: any,
-      { input }: { input: { username: string; password: string } }
+      { input }: { input: { username: string; password: string } },
     ) => {
       const usuario = await prisma.usuario.findUnique({
         where: {
@@ -53,11 +62,11 @@ export const usuarioResolver = {
       {
         id,
         input,
-      }: { id: number; input: { username: string; password: string } }
+      }: { id: number; input: { username: string; password: string } },
     ) => {
       const usuarioAtualizado = await prisma.usuario.update({
         where: {
-          id
+          id,
         },
         data: {
           username: input.username,
