@@ -19,6 +19,7 @@ export const participacaoTypes = gql`
     usg: Boolean
     mamografia: Boolean
     eletrocardiograma: Boolean
+    clinico: Boolean
   }
 
   enum StatusFeira {
@@ -48,6 +49,7 @@ export const participacaoTypes = gql`
     usg: Boolean
     mamografia: Boolean
     eletrocardiograma: Boolean
+    clinico: Boolean
   }
 
   input ParticipacaoInputUpdate {
@@ -64,6 +66,7 @@ export const participacaoTypes = gql`
     usg: Boolean
     mamografia: Boolean
     eletrocardiograma: Boolean
+    clinico: Boolean
   }
 
   type Mutation {
