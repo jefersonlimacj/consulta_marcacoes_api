@@ -97,6 +97,7 @@ model Participacao {
   usg               Boolean @default(false)
   mamografia        Boolean @default(false)
   eletrocardiograma Boolean @default(false)
+  clinico Boolean @default(false)
 
   lider    Lider    @relation(fields: [liderId], references: [id])
   paciente Paciente @relation(fields: [pacienteId], references: [id])
