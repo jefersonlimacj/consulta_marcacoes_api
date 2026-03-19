@@ -88,16 +88,30 @@ model Participacao {
   presenca    Boolean     @default(false)
   criadoEm    DateTime    @default(now()) @map("criado_em")
 
-  cardiologista     Boolean @default(false)
-  ginecologista     Boolean @default(false)
-  ortopedista       Boolean @default(false)
-  urologista        Boolean @default(false)
-  oftalmologista    Boolean @default(false)
-  odonto            Boolean @default(false)
-  usg               Boolean @default(false)
-  mamografia        Boolean @default(false)
-  eletrocardiograma Boolean @default(false)
-  clinico           Boolean @default(false)
+  cardiologista      Boolean @default(false)
+  cardiologistaP     Boolean
+  ginecologista      Boolean @default(false)
+  ginecologistaP     Boolean
+  ortopedista        Boolean @default(false)
+  ortopedistaP       Boolean
+  urologista         Boolean @default(false)
+  urologistaP        Boolean
+  oftalmologista     Boolean @default(false)
+  oftalmologistaP    Boolean
+  odonto             Boolean @default(false)
+  odontoP            Boolean
+  usg                Boolean @default(false)
+  usgP               Boolean
+  mamografia         Boolean @default(false)
+  mamografiaP        Boolean
+  eletrocardiograma  Boolean @default(false)
+  eletrocardiogramaP Boolean
+  clinico            Boolean @default(false)
+  clinicoP           Boolean
+  preventivo         Boolean @default(false)
+  preventivoP        Boolean
+  raiox              Boolean @default(false)
+  raioxP             Boolean
 
   lider    Lider    @relation(fields: [liderId], references: [id])
   paciente Paciente @relation(fields: [pacienteId], references: [id])

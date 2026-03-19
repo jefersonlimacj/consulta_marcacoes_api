@@ -11,15 +11,29 @@ export const participacaoTypes = gql`
     presenca: Boolean
     criadoEm: String!
     cardiologista: Boolean
+    cardiologistaP: Boolean
     ginecologista: Boolean
+    ginecologistaP: Boolean
     ortopedista: Boolean
+    ortopedistaP: Boolean
     urologista: Boolean
+    urologistaP: Boolean
     oftalmologista: Boolean
+    oftalmologistaP: Boolean
     odonto: Boolean
+    odontoP: Boolean
     usg: Boolean
+    usgP: Boolean
     mamografia: Boolean
+    mamografiaP: Boolean
     eletrocardiograma: Boolean
+    eletrocardiogramaP: Boolean
     clinico: Boolean
+    clinicoP: Boolean
+    preventivo: Boolean
+    preventivoP: Boolean
+    raiox: Boolean
+    raioxP: Boolean
   }
 
   enum StatusFeira {
@@ -41,15 +55,29 @@ export const participacaoTypes = gql`
     statusFeira: StatusFeira
     presenca: Boolean
     cardiologista: Boolean
+    cardiologistaP: Boolean
     ginecologista: Boolean
+    ginecologistaP: Boolean
     ortopedista: Boolean
+    ortopedistaP: Boolean
     urologista: Boolean
+    urologistaP: Boolean
     oftalmologista: Boolean
+    oftalmologistaP: Boolean
     odonto: Boolean
+    odontoP: Boolean
     usg: Boolean
+    usgP: Boolean
     mamografia: Boolean
+    mamografiaP: Boolean
     eletrocardiograma: Boolean
+    eletrocardiogramaP: Boolean
     clinico: Boolean
+    clinicoP: Boolean
+    preventivo: Boolean
+    preventivoP: Boolean
+    raiox: Boolean
+    raioxP: Boolean
   }
 
   input ParticipacaoInputUpdate {
@@ -58,15 +86,29 @@ export const participacaoTypes = gql`
     statusFeira: StatusFeira
     presenca: Boolean
     cardiologista: Boolean
+    cardiologistaP: Boolean
     ginecologista: Boolean
+    ginecologistaP: Boolean
     ortopedista: Boolean
+    ortopedistaP: Boolean
     urologista: Boolean
+    urologistaP: Boolean
     oftalmologista: Boolean
+    oftalmologistaP: Boolean
     odonto: Boolean
+    odontoP: Boolean
     usg: Boolean
+    usgP: Boolean
     mamografia: Boolean
+    mamografiaP: Boolean
     eletrocardiograma: Boolean
+    eletrocardiogramaP: Boolean
     clinico: Boolean
+    clinicoP: Boolean
+    preventivo: Boolean
+    preventivoP: Boolean
+    raiox: Boolean
+    raioxP: Boolean
   }
 
   type Mutation {
