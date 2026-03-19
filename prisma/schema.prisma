@@ -89,29 +89,31 @@ model Participacao {
   criadoEm    DateTime    @default(now()) @map("criado_em")
 
   cardiologista      Boolean @default(false)
-  cardiologistaP     Boolean
+  cardiologistaP     Boolean @default(false) @map("cardiologista_p")
   ginecologista      Boolean @default(false)
-  ginecologistaP     Boolean
+  ginecologistaP     Boolean @default(false) @map("ginecologista_p")
   ortopedista        Boolean @default(false)
-  ortopedistaP       Boolean
+  ortopedistaP       Boolean @default(false) @map("ortopedista_p")
   urologista         Boolean @default(false)
-  urologistaP        Boolean
+  urologistaP        Boolean @default(false) @map("urologista_p") 
   oftalmologista     Boolean @default(false)
-  oftalmologistaP    Boolean
+  oftalmologistaP    Boolean @default(false) @map("oftalmologista_p")
   odonto             Boolean @default(false)
-  odontoP            Boolean
+  odontoP            Boolean @default(false) @map("odonto_p")
   usg                Boolean @default(false)
-  usgP               Boolean
+  usgP               Boolean @default(false) @map("usg_p")
   mamografia         Boolean @default(false)
-  mamografiaP        Boolean
+  mamografiaP        Boolean @default(false) @map("mamografia_p")
   eletrocardiograma  Boolean @default(false)
-  eletrocardiogramaP Boolean
+  eletrocardiogramaP Boolean @default(false) @map("eletrocardiograma_p")
   clinico            Boolean @default(false)
-  clinicoP           Boolean
+  clinicoP           Boolean @default(false) @map("clinico_p")
   preventivo         Boolean @default(false)
-  preventivoP        Boolean
+  preventivoP        Boolean @default(false) @map("preventivo_p")
   raiox              Boolean @default(false)
-  raioxP             Boolean
+  raioxP             Boolean @default(false) @map("raiox_p")
+
+
 
   lider    Lider    @relation(fields: [liderId], references: [id])
   paciente Paciente @relation(fields: [pacienteId], references: [id])

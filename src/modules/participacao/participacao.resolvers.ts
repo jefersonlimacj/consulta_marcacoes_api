@@ -33,17 +33,36 @@ export const participacaoResolvers = {
   },
   Mutation: {
     criarParticipacao: async (parent: any, { input }: any) => {
+      // 1. Converter IDs para BigInt para a busca e para a criação
+      const pId = BigInt(input.pacienteId);
+      const lId = BigInt(input.liderId);
+
       const existing = await prisma.participacao.findUnique({
-        where: { pacienteId: parseInt(input.pacienteId) },
+        where: { pacienteId: pId },
       });
 
       if (existing) {
         throw new Error("Já existe uma participação para este paciente.");
       }
 
+      // 2. Separar os IDs do restante do input para tratar a conexão
+      const { pacienteId, liderId, ...rest } = input;
+
       const novaParticipacao = await prisma.participacao.create({
         data: {
-          ...input,
+          ...rest,
+          // Tratando os campos que no Model são Boolean, mas no input podem vir null
+          // (Opcional: Garante que null vire false como no seu Model)
+          cardiologistaP: rest.cardiologistaP ?? false,
+          // ... fazer para os outros se necessário
+
+          // Conectando as relações corretamente
+          paciente: {
+            connect: { id: pId },
+          },
+          lider: {
+            connect: { id: lId },
+          },
         },
         include: {
           paciente: true,
@@ -51,9 +70,13 @@ export const participacaoResolvers = {
         },
       });
 
+      // 3. Retornar convertendo BigInt para String (GraphQL não aceita BigInt nativo)
       return {
         ...novaParticipacao,
         id: String(novaParticipacao.id),
+        pacienteId: String(novaParticipacao.pacienteId),
+        liderId: String(novaParticipacao.liderId),
+        criadoEm: novaParticipacao.criadoEm.toISOString(),
       };
     },
     atualizarParticipacao: async (_: any, args: any) => {

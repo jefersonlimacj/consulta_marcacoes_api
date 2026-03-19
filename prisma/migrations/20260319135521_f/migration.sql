@@ -1,0 +1,15 @@
+-- AlterTable
+ALTER TABLE "participacao" ADD COLUMN     "cardiologistaP" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "clinicoP" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "eletrocardiogramaP" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "ginecologistaP" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "mamografiaP" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "odontoP" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "oftalmologistaP" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "ortopedistaP" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "preventivo" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "preventivoP" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "raiox" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "raioxP" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "urologistaP" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "usgP" BOOLEAN NOT NULL DEFAULT false;
